@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+const config = require("config");
+
 const dbgr = require("debug")("development:mongoose");
-dbgr("Debugging is enabled");
 
 mongoose
-  .connect("mongodb://localhost:27017/Scatch")
+  .connect(`${config.get("MONGODB_URI")}/Scatch`)
   .then(function () {
     dbgr(" Db connected");
   })
